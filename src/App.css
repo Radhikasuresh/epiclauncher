@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-layout {
+  position: relative;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background: transparent;
+  padding: 15px 15px;
+  box-sizing: border-box;
+
+  > .brand-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    > img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  > .link-container {
+    > .nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      > ul {
+        width: 100%;
+        list-style-type: none;
+        padding: 0px;
+
+        > a {
+          text-decoration: none;
+          > .nav-list {
+            width: 100%;
+            height: 70px;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            cursor: pointer;
+
+            > span {
+              margin-right: 20px;
+            }
+          }
+
+          > .nav-list:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          > .active {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.content-area-container {
+  width: calc(100vw - 300px);
+  padding: 50px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.spotlight-listings-container {
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 50px;
+
+  > p {
+    font-size: 28px;
+    color: #ffffff;
+    font-weight: 500;
+    margin: 0 0 20px 0;
   }
-  to {
-    transform: rotate(360deg);
+  > .game-card-listings {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
   }
+}
+
+.game-card-listings::-webkit-scrollbar {
+  width: 1em;
+}
+
+.game-card-listings::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.game-card-listings::-webkit-scrollbar-thumb {
+  background-color: #007aff;
+  outline: 1px solid rgb(7, 131, 255);
+  border-radius: 10px;
+}
+
+.game-card {
+  position: relative;
+  min-width: 210px;
+  height: auto;
+  border-radius: 5px;
+
+  > .wishlist-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #ffffff;
+    border-radius: 25px;
+    display: none;
+  }
+
+  > img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .game-content {
+    .gameType {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 300;
+    }
+    .gameName {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .gameOffersContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .offer {
+        background: #007aff;
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        color: #ffffff;
+        height: 0.8rem;
+        border-radius: 5px;
+      }
+      .pricing {
+        color: #ffffff;
+        .actualPrice {
+          text-decoration: line-through;
+        }
+        .sellingPrice {
+          font-weight: 500;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.game-card:hover {
+  .wishlist-button {
+    display: block;
+    cursor: pointer;
+    color: black;
+  }
+}
+
+/* WISHLIST PAGE */
+
+.wishlist-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: #ffffff;
 }
